@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.roldan.revistero.modelo">
+  <class 
+  	name="Tema"
+  	table="TEMAS">
+  	
+  	<id
+		name="idTema"
+		column="ID_TEMA">
+		<generator class="increment"/>
+	</id>
+	
+	<property
+		name="nombre"
+		type="string"
+		column="NOMBRE"/>
+		
+	<property
+		name="descripcion"	
+		type="string"
+		column="DESCRIPCION"/>
+	
+	<many-to-one 
+		name="categoria"
+		class="Categoria"
+		column="ID_CATEGORIA"
+		foreign-key="FK_CATEGORIA"
+		lazy="false"/>
+	
+  </class>
+</hibernate-mapping>

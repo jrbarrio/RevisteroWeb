@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE form-validation PUBLIC
+"-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.1.3//EN"
+"http://jakarta.apache.org/commons/dtds/validator_1_1_3.dtd">
+
+<form-validation>
+   <formset>
+   
+      <form name="categoria">         
+         <field property="nombre" depends="required">
+	        <arg0 key="nombre"/>
+	    </field> 
+	    <field property="descripcion" depends="required">
+	        <arg0 key="descripcion"/>
+	    </field>        
+      </form>
+      
+      <form name="tema">         
+         <field property="nombre" depends="required">
+	        <arg0 key="nombre"/>
+	    </field> 
+	    <field property="descripcion" depends="required">
+	        <arg0 key="descripcion"/>
+	    </field>        
+      </form>
+      
+      <form name="revista">         
+         <field property="nombre" depends="required">
+	        <arg0 key="nombre"/>
+	    </field> 
+	    <field property="descripcion" depends="required">
+	        <arg0 key="descripcion"/>
+	    </field>        
+      </form>
+      
+      <form name="numero">         
+         <field property="titulo" depends="required">
+	        <arg0 key="titulo"/>
+	    </field> 
+	    <field property="descripcion" depends="required">
+	        <arg0 key="decripcion"/>
+	    </field>
+	    <field property="numero" depends="required,integer">
+	        <arg0 key="numero"/>
+	    </field>        
+      </form>
+      
+      <form name="articulo">         
+         <field property="titulo" depends="required">
+	        <arg0 key="titulo"/>
+	    </field> 
+	    <field property="descripcion" depends="required">
+	        <arg0 key="descripcion"/>
+	    </field>       
+      </form>
+      
+   </formset>
+</form-validation>

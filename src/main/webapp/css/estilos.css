@@ -1,0 +1,170 @@
+BODY {
+   font: 8pt Verdana, Geneva, Arial, Helvetica, sans-serif;
+   margin: 10 0 10 0px;
+   text-align: center;
+   background-color:#EDD9CC;
+}
+.contenedor{
+   text-align: left;
+   width: 1200px;
+   margin: auto;
+}
+.cabecera{
+   font-size:12pt;
+   font-weight: bold;
+   padding: 3 3 3 10px;
+}
+.cabecera a{
+   text-decoration: none;
+}
+.cuerpo{
+   margin: 10 0 10 0px;
+}
+.lateral{
+   width: 170px;
+   float:left;
+}
+.lateral ul{
+   margin : 0 0 0 0px;
+   padding: 0 0 0 0px;
+   list-style: none;
+}
+.lateral li{
+   margin: 2 2 2 2px;
+   padding: 2 2 2 2px;
+   font-weight: bold;
+}
+.lateral a{
+   text-decoration: none;
+   padding-left: 10px;
+   color:blue;
+}
+.principal{
+   margin-left: 180px;
+   padding: 4 4 4 4px;
+   background-color:#ECEECD;
+   border: #000000 solid 10px;
+   text-align: center;
+}
+.pie{
+   padding: 3 10 3 10px;
+   text-align:right;
+   float:none;
+}
+LEGEND{
+	font-weight:bold;
+	font-size:15px;
+}
+.lista_elementos{
+	overflow:auto;
+}
+.elemento{
+   text-align: left;
+   margin: 5 10 5 10px;
+   border: #000000 solid thin;
+   padding: 3 3 3 3px;
+}
+.nombre{
+	font-weight:bold;
+}
+.campo{
+	text-align: left;
+	width: 90%;
+	margin: auto;
+	padding: 5 5 5 5px;
+}
+.nombre_campo{
+	width:15%;
+	float:left;
+	padding:9 5 9 5px;
+	font-weight:bold;
+}
+.valor_campo{
+	padding:5px;
+}
+.opciones{
+   text-align: center;
+   width: 90%;
+   margin: auto;
+   padding:0px;
+}
+.boton{
+	padding:3px;
+	font-size:8pt;
+   text-decoration: none;
+   margin-left:0px;
+   color:blue;
+   border: #000000 solid thin;
+   font-weight:bold;
+   background-color:#CCCCCC;
+}
+.deshabilitado{
+  padding:4 0 4 0px;
+}
+.ayuda{
+  display:none;
+  text-align: left;
+	width: 90%;
+	margin: auto;
+	padding: 5 5 5 5px;
+	color:red;
+}
+.enlace_ayuda{
+  text-decoration: none;
+   padding: 2px;
+   color:blue;
+   border: #000000 solid thin;
+   font-weight:bold;
+   background-color:#CCCCCC;
+}
+.validacion{
+	color:red;
+}
+
+.tabla{
+	border-collapse: collapse;
+	font: 8pt Verdana, Geneva, Arial, Helvetica, sans-serif;
+	border-bottom: 1px solid;
+}
+.cabeceraTabla{
+	font: 8pt Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-weight:bold;
+	text-align:left;
+	padding:5px;
+	border-bottom: 1px solid;
+}
+.columna1{
+	font-weight:bold;
+	width:35%;
+	padding:5px;
+}
+.columna2{
+	width:60%;
+	padding:5px;
+}
+.columna3{
+	text-align:center;
+	width:5%;
+	padding:5px;
+}
+.columna4{
+	padding:5px;
+}
+.columna5{
+	padding:5px;
+}
+.columna6{
+	padding:5px;
+}
+.error{
+	float:none;
+	text-align: left;
+	color:red;
+}
+tbody tr:hover {
+	color: blue;
+}
+
+tbody tr td a {
+	cursor: pointer;
+}

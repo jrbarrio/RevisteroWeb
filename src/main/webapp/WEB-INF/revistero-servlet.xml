@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	
+	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/revistero-defs.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.tiles.TilesJstlView"/>
+	</bean>
+	
+	<bean id="beanValidator" class="org.springmodules.validation.commons.DefaultBeanValidator">
+		<property name="validatorFactory" ref="validatorFactory" />
+	</bean>
+	<bean id="validatorFactory" class="org.springmodules.validation.commons.DefaultValidatorFactory">
+		<property name="validationConfigLocations">
+			<list>
+				<value>WEB-INF/validator-rules.xml</value>
+				<value>WEB-INF/validation.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="simpleUrlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/inicio.htm">inicioController</prop>
+				
+				<prop key="/categorias.htm">categoriasController</prop>
+				<prop key="/verCategoria.htm">verCategoriaController</prop>
+				<prop key="/editarCategoria.htm">editarCategoriaController</prop>
+				<prop key="/borrarCategoria.htm">borrarCategoriaController</prop>
+				<prop key="/buscarCategorias.htm">buscarCategoriasController</prop>
+				
+				<prop key="/temas.htm">temasController</prop>
+				<prop key="/verTema.htm">verTemaController</prop>
+				<prop key="/editarTema.htm">editarTemaController</prop>
+				<prop key="/borrarTema.htm">borrarTemaController</prop>
+				<prop key="/buscarTemas.htm">buscarTemasController</prop>
+				
+				<prop key="/revistas.htm">revistasController</prop>
+				<prop key="/verRevista.htm">verRevistaController</prop>
+				<prop key="/editarRevista.htm">editarRevistaController</prop>
+				<prop key="/borrarRevista.htm">borrarRevistaController</prop>
+				<prop key="/buscarRevistas.htm">buscarRevistasController</prop>
+				
+				<prop key="/numeros.htm">numerosController</prop>
+				<prop key="/verNumero.htm">verNumeroController</prop>
+				<prop key="/editarNumero.htm">editarNumeroController</prop>
+				<prop key="/borrarNumero.htm">borrarNumeroController</prop>
+				<prop key="/buscarNumeros.htm">buscarNumerosController</prop>
+				
+				<prop key="/articulos.htm">articulosController</prop>
+				<prop key="/verArticulo.htm">verArticuloController</prop>
+				<prop key="/editarArticulo.htm">editarArticuloController</prop>
+				<prop key="/borrarArticulo.htm">borrarArticuloController</prop>
+				<prop key="/buscarArticulos.htm">buscarArticulosController</prop>
+				
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="inicioController" class="com.roldan.revistero.controllers.InicioController"/>
+	
+	<bean id="categoriasAbstractController" abstract="true">
+		<property name="categoriaDao" ref="categoriaDao"/>
+	</bean>
+	<bean id="categoriasController" class="com.roldan.revistero.controllers.categorias.CategoriasController" parent="categoriasAbstractController"/>
+	<bean id="verCategoriaController" class="com.roldan.revistero.controllers.categorias.VerCategoriaController" parent="categoriasAbstractController"/>
+	<bean id="editarCategoriaController" class="com.roldan.revistero.controllers.categorias.EditarCategoriaController" parent="categoriasAbstractController">
+		<property name="formView" value="editarCategoria"/>
+		<property name="successView" value="actualizacion"/>
+		<property name="validator" ref="beanValidator"/>
+	</bean>
+	<bean id="borrarCategoriaController" class="com.roldan.revistero.controllers.categorias.BorrarCategoriaController" parent="categoriasAbstractController"/>
+	<bean id="buscarCategoriasController" class="com.roldan.revistero.controllers.categorias.BuscarCategoriasController" parent="categoriasAbstractController">
+		<property name="formView" value="buscarCategorias"/>
+		<property name="successView" value="categorias"/>
+	</bean>
+	
+	<bean id="temasAbstractController" abstract="true">
+		<property name="temaDao" ref="temaDao"/>
+	</bean>
+	<bean id="temasController" class="com.roldan.revistero.controllers.temas.TemasController" parent="temasAbstractController"/>	
+	<bean id="verTemaController" class="com.roldan.revistero.controllers.temas.VerTemaController" parent="temasAbstractController"/>
+	<bean id="editarTemaController" class="com.roldan.revistero.controllers.temas.EditarTemaController" parent="temasAbstractController">
+		<property name="formView" value="editarTema"/>
+		<property name="successView" value="actualizacion"/>
+		<property name="categoriaDao" ref="categoriaDao"/>
+		<property name="validator" ref="beanValidator"/>
+	</bean>
+	<bean id="borrarTemaController" class="com.roldan.revistero.controllers.temas.BorrarTemaController" parent="temasAbstractController"/>
+	<bean id="buscarTemasController" class="com.roldan.revistero.controllers.temas.BuscarTemasController" parent="temasAbstractController">
+		<property name="formView" value="buscarTemas"/>
+		<property name="successView" value="temas"/>
+		<property name="categoriaDao" ref="categoriaDao"/>
+	</bean>
+
+	<bean id="revistasAbstractController" abstract="true">
+		<property name="revistaDao" ref="revistaDao"/>
+	</bean>
+	<bean id="revistasController" class="com.roldan.revistero.controllers.revistas.RevistasController" parent="revistasAbstractController"/>	
+	<bean id="verRevistaController" class="com.roldan.revistero.controllers.revistas.VerRevistaController" parent="revistasAbstractController"/>
+	<bean id="editarRevistaController" class="com.roldan.revistero.controllers.revistas.EditarRevistaController" parent="revistasAbstractController">
+		<property name="formView" value="editarRevista"/>
+		<property name="successView" value="actualizacion"/>
+		<property name="validator" ref="beanValidator"/>
+	</bean>
+	<bean id="borrarRevistaController" class="com.roldan.revistero.controllers.revistas.BorrarRevistaController" parent="revistasAbstractController"/>
+	<bean id="buscarRevistasController" class="com.roldan.revistero.controllers.revistas.BuscarRevistasController" parent="revistasAbstractController">
+		<property name="formView" value="buscarRevistas"/>
+		<property name="successView" value="revistas"/>
+	</bean>
+
+	<bean id="numerosAbstractController" abstract="true">
+		<property name="numeroDao" ref="numeroDao"/>
+	</bean>
+	<bean id="numerosController" class="com.roldan.revistero.controllers.numeros.NumerosController" parent="numerosAbstractController"/>	
+	<bean id="verNumeroController" class="com.roldan.revistero.controllers.numeros.VerNumeroController" parent="numerosAbstractController"/>
+	<bean id="editarNumeroController" class="com.roldan.revistero.controllers.numeros.EditarNumeroController" parent="numerosAbstractController">
+		<property name="formView" value="editarNumero"/>
+		<property name="successView" value="actualizacion"/>
+		<property name="revistaDao" ref="revistaDao"/>
+		<property name="validator" ref="beanValidator"/>
+	</bean>
+	<bean id="borrarNumeroController" class="com.roldan.revistero.controllers.numeros.BorrarNumeroController" parent="numerosAbstractController"/>
+	<bean id="buscarNumerosController" class="com.roldan.revistero.controllers.numeros.BuscarNumerosController" parent="numerosAbstractController">
+		<property name="formView" value="buscarNumeros"/>
+		<property name="successView" value="numeros"/>
+		<property name="revistaDao" ref="revistaDao"/>
+	</bean>
+	
+	<bean id="articulosAbstractController" abstract="true">
+		<property name="articuloDao" ref="articuloDao"/>
+	</bean>
+	<bean id="articulosController" class="com.roldan.revistero.controllers.articulos.ArticulosController" parent="articulosAbstractController"/>	
+	<bean id="verArticuloController" class="com.roldan.revistero.controllers.articulos.VerArticuloController" parent="articulosAbstractController"/>
+	<bean id="editarArticuloController" class="com.roldan.revistero.controllers.articulos.EditarArticuloController" parent="articulosAbstractController">
+		<property name="formView" value="editarArticulo"/>
+		<property name="successView" value="actualizacion"/>
+		<property name="temaDao" ref="temaDao"/>
+		<property name="numeroDao" ref="numeroDao"/>
+		<property name="revistaDao" ref="revistaDao"/>
+		<property name="validator" ref="beanValidator"/>
+	</bean>
+	<bean id="borrarArticuloController" class="com.roldan.revistero.controllers.articulos.BorrarArticuloController" parent="articulosAbstractController"/>
+	<bean id="buscarArticulosController" class="com.roldan.revistero.controllers.articulos.BuscarArticulosController" parent="articulosAbstractController">
+		<property name="formView" value="buscarArticulos"/>
+		<property name="successView" value="articulos"/>
+		<property name="temaDao" ref="temaDao"/>
+		<property name="numeroDao" ref="numeroDao"/>
+		<property name="revistaDao" ref="revistaDao"/>
+	</bean>	
+	
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>messages</value>
+				<value>errors</value>
+			</list>
+		</property>
+	</bean>
+</beans>

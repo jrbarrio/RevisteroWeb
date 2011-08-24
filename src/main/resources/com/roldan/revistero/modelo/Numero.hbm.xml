@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.roldan.revistero.modelo">
+  <class 
+  	name="Numero"
+  	table="NUMEROS">
+  	
+  	<id
+		name="idNumero"
+		column="ID_NUMERO">
+		<generator class="increment"/>
+	</id>
+	
+	<property
+		name="titulo"
+		type="string"
+		column="TITULO"/>
+		
+	<property
+		name="descripcion"	
+		type="string"
+		column="DESCRIPCION"/>
+		
+	<many-to-one 
+		name="revista"
+		class="Revista"
+		column="ID_REVISTA"
+		foreign-key="FK_REVISTA"
+		lazy="false"/>
+	
+	<property
+		name="numero"	
+		type="string"		
+		column="NUMERO"/>
+	  
+  </class>
+</hibernate-mapping>
