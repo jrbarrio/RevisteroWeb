@@ -2,46 +2,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="authz" uri="http://acegisecurity.org/authz" %>
 
-<script type="text/javascript">
-<!--
-function verRevista(idRevista) {
-    var form = document.createElement("form");
-    form.setAttribute("method", "post");
-    form.setAttribute("action", "verRevista.htm");
-
-    var hiddenField = document.createElement("input");
-    hiddenField.setAttribute("type", "hidden");
-    hiddenField.setAttribute("name", "idRevista");
-    hiddenField.setAttribute("value", idRevista);
-
-    form.appendChild(hiddenField);
-
-    document.body.appendChild(form);
-    form.submit();
-}
-
-function borrarRevista(event, idRevista) {
-	event.stopPropagation();
-	
-	if(confirm("¿Desea realmente borrar esta revista?")) {	
-	    var form = document.createElement("form");
-	    form.setAttribute("method", "post");
-	    form.setAttribute("action", "borrarRevista.htm");
-	
-	    var hiddenField = document.createElement("input");
-	    hiddenField.setAttribute("type", "hidden");
-	    hiddenField.setAttribute("name", "idRevista");
-	    hiddenField.setAttribute("value", idRevista);
-	
-	    form.appendChild(hiddenField);
-	
-	    document.body.appendChild(form);
-	    form.submit();
-	}
-}
-//-->
-</script>
-
 <div class="principal">
   <fieldset>
   	<legend><spring:message code="titulo.revistas"/></legend>

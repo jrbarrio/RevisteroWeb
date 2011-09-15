@@ -1,5 +1,7 @@
 package com.roldan.revistero.modelo;
 
+import java.util.List;
+
 /**
  * 
  * @author Jorge Roldán
@@ -10,6 +12,7 @@ public class Revista {
 	private Long idRevista;
 	private String nombre;
 	private String descripcion;
+	private List<Numero> numeros;
 	
 	public Long getIdRevista() {
 		return idRevista;
@@ -28,5 +31,11 @@ public class Revista {
 	}
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+	public List<Numero> getNumeros() {
+		return numeros;
+	}
+	public void setNumeros(List<Numero> numeros) {
+		this.numeros = numeros;
 	}
 }

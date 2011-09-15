@@ -2,47 +2,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="authz" uri="http://acegisecurity.org/authz" %>
 
-<script type="text/javascript">
-<!--
-function verNumero(idNumero) {
-    var form = document.createElement("form");
-    form.setAttribute("method", "post");
-    form.setAttribute("action", "verNumero.htm");
-
-    var hiddenField = document.createElement("input");
-    hiddenField.setAttribute("type", "hidden");
-    hiddenField.setAttribute("name", "idNumero");
-    hiddenField.setAttribute("value", idNumero);
-
-    form.appendChild(hiddenField);
-
-    document.body.appendChild(form);
-    form.submit();
-}
-
-function borrarNumero(event, idNumero) {
-	event.stopPropagation();
-	
-	if(confirm("¿Desea realmente borrar este número?")) {	
-	    var form = document.createElement("form");
-	    form.setAttribute("method", "post");
-	    form.setAttribute("action", "borrarNumero.htm");
-	
-	    var hiddenField = document.createElement("input");
-	    hiddenField.setAttribute("type", "hidden");
-	    hiddenField.setAttribute("name", "idNumero");
-	    hiddenField.setAttribute("value", idNumero);
-	
-	    form.appendChild(hiddenField);
-	
-	    document.body.appendChild(form);
-	    form.submit();
-	}
-}
-//-->
-</script>
-
-
 <div class="principal">
   <fieldset>
   	<legend><spring:message code="titulo.numeros"/></legend>

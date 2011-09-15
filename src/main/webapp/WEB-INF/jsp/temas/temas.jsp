@@ -2,46 +2,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="authz" uri="http://acegisecurity.org/authz" %>
 
-<script type="text/javascript">
-<!--
-function verTema(idTema) {
-    var form = document.createElement("form");
-    form.setAttribute("method", "post");
-    form.setAttribute("action", "verTema.htm");
-
-    var hiddenField = document.createElement("input");
-    hiddenField.setAttribute("type", "hidden");
-    hiddenField.setAttribute("name", "idTema");
-    hiddenField.setAttribute("value", idTema);
-
-    form.appendChild(hiddenField);
-
-    document.body.appendChild(form);
-    form.submit();
-}
-
-function borrarTema(event, idTema) {
-	event.stopPropagation();
-	
-	if(confirm("¿Desea realmente borrar este tema?")) {	
-	    var form = document.createElement("form");
-	    form.setAttribute("method", "post");
-	    form.setAttribute("action", "borrarTema.htm");
-	
-	    var hiddenField = document.createElement("input");
-	    hiddenField.setAttribute("type", "hidden");
-	    hiddenField.setAttribute("name", "idTema");
-	    hiddenField.setAttribute("value", idTema);
-	
-	    form.appendChild(hiddenField);
-	
-	    document.body.appendChild(form);
-	    form.submit();
-	}
-}
-//-->
-</script>
-
 <div class="principal">
   <fieldset>
   	<legend><spring:message code="titulo.temas"/></legend>

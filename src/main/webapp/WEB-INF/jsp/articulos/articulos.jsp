@@ -2,47 +2,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="authz" uri="http://acegisecurity.org/authz" %>
 
-<script type="text/javascript">
-<!--
-function verArticulo(idArticulo) {
-    var form = document.createElement("form");
-    form.setAttribute("method", "post");
-    form.setAttribute("action", "verArticulo.htm");
-
-    var hiddenField = document.createElement("input");
-    hiddenField.setAttribute("type", "hidden");
-    hiddenField.setAttribute("name", "idArticulo");
-    hiddenField.setAttribute("value", idArticulo);
-
-    form.appendChild(hiddenField);
-
-    document.body.appendChild(form);
-    form.submit();
-}
-
-function borrarArticulo(event, idArticulo) {
-	event.stopPropagation();
-	
-	if(confirm("¿Desea realmente borrar este artículo?")) {	
-	    var form = document.createElement("form");
-	    form.setAttribute("method", "post");
-	    form.setAttribute("action", "borrarArticulo.htm");
-	
-	    var hiddenField = document.createElement("input");
-	    hiddenField.setAttribute("type", "hidden");
-	    hiddenField.setAttribute("name", "idArticulo");
-	    hiddenField.setAttribute("value", idArticulo);
-	
-	    form.appendChild(hiddenField);
-	
-	    document.body.appendChild(form);
-	    form.submit();
-	}
-}
-//-->
-</script>
-
-
 <div class="principal">
   <fieldset>
   	<legend><spring:message code="titulo.articulos"/></legend>

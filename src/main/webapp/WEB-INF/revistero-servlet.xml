@@ -106,7 +106,9 @@
 		<property name="revistaDao" ref="revistaDao"/>
 	</bean>
 	<bean id="revistasController" class="com.roldan.revistero.controllers.revistas.RevistasController" parent="revistasAbstractController"/>	
-	<bean id="verRevistaController" class="com.roldan.revistero.controllers.revistas.VerRevistaController" parent="revistasAbstractController"/>
+	<bean id="verRevistaController" class="com.roldan.revistero.controllers.revistas.VerRevistaController" parent="revistasAbstractController">
+		<property name="numeroDao" ref="numeroDao"/>
+	</bean>
 	<bean id="editarRevistaController" class="com.roldan.revistero.controllers.revistas.EditarRevistaController" parent="revistasAbstractController">
 		<property name="formView" value="editarRevista"/>
 		<property name="successView" value="actualizacion"/>
