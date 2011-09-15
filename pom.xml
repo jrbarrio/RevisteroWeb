@@ -3,13 +3,8 @@
 	<groupId>com.roldan.revistero</groupId>
 	<artifactId>RevisteroWeb</artifactId>
 	<name>RevisteroWeb</name>
-	<version>0.4-SNAPSHOT</version>
+	<version>0.1.0</version>
 	<packaging>war</packaging>
-
-	<scm>
-		<url>scm:svn:http://192.168.11.128/svn/revistero/trunk/RevisteroWeb</url>
-		<developerConnection>scm:svn:http://192.168.11.128/svn/revistero/trunk/RevisteroWeb</developerConnection>
-	</scm>
 
 	<build>
 		<plugins>
