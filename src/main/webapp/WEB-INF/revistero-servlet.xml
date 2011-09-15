@@ -124,7 +124,9 @@
 		<property name="numeroDao" ref="numeroDao"/>
 	</bean>
 	<bean id="numerosController" class="com.roldan.revistero.controllers.numeros.NumerosController" parent="numerosAbstractController"/>	
-	<bean id="verNumeroController" class="com.roldan.revistero.controllers.numeros.VerNumeroController" parent="numerosAbstractController"/>
+	<bean id="verNumeroController" class="com.roldan.revistero.controllers.numeros.VerNumeroController" parent="numerosAbstractController">
+		<property name="articuloDao" ref="articuloDao"/>
+	</bean>
 	<bean id="editarNumeroController" class="com.roldan.revistero.controllers.numeros.EditarNumeroController" parent="numerosAbstractController">
 		<property name="formView" value="editarNumero"/>
 		<property name="successView" value="actualizacion"/>
