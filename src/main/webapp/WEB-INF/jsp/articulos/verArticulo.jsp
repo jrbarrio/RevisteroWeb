@@ -23,19 +23,31 @@
 					<div class="campo">
 						<div class="nombre_campo"><spring:message code="campo.tema"/></div>
 						<div class="valor_campo">
-		           			<div class="deshabilitado"><c:out value="${articulo.tema.nombre}"/></div>
+		           			<div class="deshabilitado">
+		           				<a onclick="javascript:verTema(<c:out value="${articulo.tema.idTema}"/>);">
+		           					<c:out value="${articulo.tema.nombre}"/>
+		           				</a>
+		           			</div>
 						</div>
 					</div>
 					<div class="campo">
 						<div class="nombre_campo"><spring:message code="campo.numero"/></div>
 						<div class="valor_campo">
-		            		<div class="deshabilitado"><c:out value="${articulo.numero.numero}"/> - <c:out value="${articulo.numero.titulo}"/></div>
+		            		<div class="deshabilitado">
+		            			<a onclick="javascript:verNumero(<c:out value="${articulo.numero.idNumero}"/>);">
+		           					<c:out value="${articulo.numero.numero}"/> - <c:out value="${articulo.numero.titulo}"/>
+		           				</a>
+		            		</div>
 						</div>
 					</div>
 					<div class="campo">
 						<div class="nombre_campo"><spring:message code="campo.revista"/></div>
 						<div class="valor_campo">
-		           			<div class="deshabilitado"><c:out value="${articulo.numero.revista.nombre}"/></div>
+		           			<div class="deshabilitado">
+		           			<a onclick="javascript:verRevista(<c:out value="${articulo.numero.revista.idRevista}"/>);">
+		           					<c:out value="${articulo.numero.revista.nombre}"/>
+		           				</a>
+		           			</div>
 						</div>
 					</div>
 					<authz:authorize ifAllGranted="ROLE_EDITOR">
