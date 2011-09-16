@@ -75,7 +75,9 @@ public class ArticuloDao
 			numeroCriteria.add(catRestriction);
 		}	
 		
-		if(articulo.getNumero().getRevista()!=null && articulo.getNumero().getRevista().getIdRevista()!=null)
+		if(articulo.getNumero()!=null 
+				&& articulo.getNumero().getRevista()!=null 
+				&& articulo.getNumero().getRevista().getIdRevista()!=null)
 		{
 			Criteria revistaCriteria = numeroCriteria.createCriteria("revista");
 			Criterion revistaRestriction = Restrictions.eq("idRevista", articulo.getNumero().getRevista().getIdRevista());

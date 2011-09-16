@@ -1,11 +1,14 @@
 package com.roldan.revistero.modelo;
 
+import java.util.List;
+
 public class Tema
 {
 	private Long idTema;
 	private Categoria categoria;
 	private String nombre;
 	private String descripcion;
+	private List<Articulo> articulos;
 	
 	public Long getIdTema() {
 		return idTema;
@@ -30,5 +33,11 @@ public class Tema
 	}
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+	public List<Articulo> getArticulos() {
+		return articulos;
+	}
+	public void setArticulos(List<Articulo> articulos) {
+		this.articulos = articulos;
 	}
 }

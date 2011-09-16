@@ -90,7 +90,9 @@
 		<property name="temaDao" ref="temaDao"/>
 	</bean>
 	<bean id="temasController" class="com.roldan.revistero.controllers.temas.TemasController" parent="temasAbstractController"/>	
-	<bean id="verTemaController" class="com.roldan.revistero.controllers.temas.VerTemaController" parent="temasAbstractController"/>
+	<bean id="verTemaController" class="com.roldan.revistero.controllers.temas.VerTemaController" parent="temasAbstractController">
+		<property name="articuloDao" ref="articuloDao"/>
+	</bean>
 	<bean id="editarTemaController" class="com.roldan.revistero.controllers.temas.EditarTemaController" parent="temasAbstractController">
 		<property name="formView" value="editarTema"/>
 		<property name="successView" value="actualizacion"/>
