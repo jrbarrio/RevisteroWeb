@@ -31,7 +31,11 @@
 					<div class="campo">
 						<div class="nombre_campo"><spring:message code="campo.revista"/></div>
 						<div class="valor_campo">
-		           			<div class="deshabilitado"><c:out value="${numero.revista.nombre}"/></div>
+		           			<div class="deshabilitado">
+		           				<a onclick="javascript:verRevista(<c:out value="${numero.revista.idRevista}"/>);">
+		           					<c:out value="${numero.revista.nombre}"/>
+		           				</a>
+		           			</div>
 						</div>
 					</div>
 					<authz:authorize ifAllGranted="ROLE_EDITOR">
