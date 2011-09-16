@@ -1,5 +1,7 @@
 package com.roldan.revistero.modelo;
 
+import java.util.List;
+
 /**
  * 
  * @author Jorge Roldán
@@ -10,6 +12,7 @@ public class Categoria {
 	private Long idCategoria;
 	private String nombre;
 	private String descripcion;
+	private List<Tema> temas;
 	
 	public Long getIdCategoria() {
 		return idCategoria;
@@ -28,5 +31,11 @@ public class Categoria {
 	}
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+	public List<Tema> getTemas() {
+		return temas;
+	}
+	public void setTemas(List<Tema> temas) {
+		this.temas = temas;
 	}
 }

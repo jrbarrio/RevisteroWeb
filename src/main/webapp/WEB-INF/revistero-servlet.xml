@@ -72,7 +72,9 @@
 		<property name="categoriaDao" ref="categoriaDao"/>
 	</bean>
 	<bean id="categoriasController" class="com.roldan.revistero.controllers.categorias.CategoriasController" parent="categoriasAbstractController"/>
-	<bean id="verCategoriaController" class="com.roldan.revistero.controllers.categorias.VerCategoriaController" parent="categoriasAbstractController"/>
+	<bean id="verCategoriaController" class="com.roldan.revistero.controllers.categorias.VerCategoriaController" parent="categoriasAbstractController">
+		<property name="temaDao" ref="temaDao"/>
+	</bean>
 	<bean id="editarCategoriaController" class="com.roldan.revistero.controllers.categorias.EditarCategoriaController" parent="categoriasAbstractController">
 		<property name="formView" value="editarCategoria"/>
 		<property name="successView" value="actualizacion"/>

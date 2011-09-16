@@ -31,4 +31,37 @@
 			</form>			
 		</div>
 	</fieldset>
+	<fieldset>
+  		<legend><spring:message code="titulo.temas"/></legend>
+		<div>
+			<form>
+				<table class="tabla">
+					<thead class="cabeceraTabla">
+						<tr>
+							<th><spring:message code="campo.nombre"/></th>
+							<th><spring:message code="campo.descripcion"/></th>
+							<th><spring:message code="campo.categoria"/></th>
+							<authz:authorize ifAllGranted="ROLE_EDITOR">
+								<th></th>
+							</authz:authorize>
+						</tr>
+					</thead>
+					<c:forEach items="${categoria.temas}" var="tema">
+					<tr onclick="javascript:verTema(<c:out value='${tema.idTema}'/>);">
+						<td class="columna1"><c:out value="${tema.nombre}"/></td>
+						<td class="columna2"><c:out value="${tema.descripcion}"/></td>
+						<td class="columna3"><c:out value="${tema.categoria.nombre}"/></td>
+						<authz:authorize ifAllGranted="ROLE_EDITOR">
+							<td class="columna6">
+								<a class="boton" onclick="javascript:borrarTema(event, <c:out value='${tema.idTema}'/>);">
+									<spring:message code="boton.borrar"/>
+								</a>
+							</td>
+						</authz:authorize>
+					</tr>	
+					</c:forEach>								
+				</table>			
+			</form>			
+		</div>
+	</fieldset>
 </div>
