@@ -23,7 +23,11 @@
 					<div class="campo">
 						<div class="nombre_campo"><spring:message code="campo.categoria"/></div>
 						<div class="valor_campo">
-		           			<div class="deshabilitado"><c:out value="${tema.categoria.nombre}"/></div>
+		           			<div class="deshabilitado">
+		           				<a onclick="javascript:verCategoria(<c:out value='${tema.categoria.idCategoria}'/>);">
+		           					<c:out value="${tema.categoria.nombre}"/>
+		           				</a>
+		           			</div>
 						</div>
 					</div>
 					<authz:authorize ifAllGranted="ROLE_EDITOR">

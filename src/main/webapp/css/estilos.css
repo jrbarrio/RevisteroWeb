@@ -168,3 +168,11 @@ tbody tr:hover {
 tbody tr td a {
 	cursor: pointer;
 }
+
+.deshabilitado a:hover {
+	color: blue;
+}
+
+.deshabilitado a {
+	cursor: pointer;
+}
