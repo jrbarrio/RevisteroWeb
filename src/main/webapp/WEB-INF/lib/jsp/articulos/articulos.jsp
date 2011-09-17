@@ -33,6 +33,7 @@ function verArticulo(idArticulo) {
 						<th><spring:message code="campo.titulo"/></th>
 						<th><spring:message code="campo.descripcion"/></th>
 						<th><spring:message code="campo.numero"/></th>
+						<th><spring:message code="campo.favorito"/></th>
 						<authz:authorize ifAllGranted="ROLE_EDITOR">
 							<th></th>
 						</authz:authorize>
@@ -42,6 +43,7 @@ function verArticulo(idArticulo) {
 						<td class="columna1"><c:out value="${articulo.titulo}"/></td>
 						<td class="columna2"><c:out value="${articulo.descripcion}"/></td>
 						<td class="columna3"><c:out value="${articulo.numero.numero}"/></td>
+						<td class="columna6">XXXXXXXXXXXXXXX</td>
 						<authz:authorize ifAllGranted="ROLE_EDITOR">
 							<td class="columna6">
 								<a class="boton" href="borrarArticulo.htm?idArticulo=<c:out value="${articulo.idArticulo}"/>">

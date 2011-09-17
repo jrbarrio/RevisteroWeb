@@ -3,7 +3,7 @@
 	<groupId>com.roldan.revistero</groupId>
 	<artifactId>RevisteroWeb</artifactId>
 	<name>RevisteroWeb</name>
-	<version>0.2.0</version>
+	<version>0.3.0</version>
 	<packaging>war</packaging>
 
 	<build>

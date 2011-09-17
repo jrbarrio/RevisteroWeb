@@ -7,6 +7,7 @@ public class Articulo {
 	private Tema tema;
 	private String titulo;
 	private String descripcion;
+	private boolean favorito;
 	
 	public Long getIdArticulo() {
 		return idArticulo;
@@ -37,5 +38,11 @@ public class Articulo {
 	}
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+	public boolean isFavorito() {
+		return favorito;
+	}
+	public void setFavorito(boolean favorito) {
+		this.favorito = favorito;
 	}
 }

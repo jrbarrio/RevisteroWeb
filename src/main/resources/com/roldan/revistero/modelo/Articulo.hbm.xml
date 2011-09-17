@@ -36,11 +36,10 @@
 		column="ID_TEMA"
 		foreign-key="FK_TEMA"
 		lazy="false"/>
-		
-	<!-- <set name="temas" table="TEMAS_ARTICULOS">
-		<key column="ID_ARTICULO"/>
-		<many-to-many class="Tema" column="ID_TEMA" lazy="false"/>
-	</set> -->
-  	
+
+	<property name="favorito"
+		type="boolean"
+		column="FAVORITO"/>
+	  	
   </class>
 </hibernate-mapping>

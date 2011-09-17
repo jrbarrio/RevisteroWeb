@@ -2,6 +2,30 @@ $(document).ready(function() {
 	$('tbody tr:even').css('background-color','#dddddd');
 });
 
+function marcarFavorito(event, idArticulo) {
+	alert("Se va a marcar como favorito el articulo");
+	
+    var xmlHttpReq = false;
+    var self = this;
+    // Mozilla/Safari
+    if (window.XMLHttpRequest) {
+        self.xmlHttpReq = new XMLHttpRequest();
+    }
+    // IE
+    else if (window.ActiveXObject) {
+        self.xmlHttpReq = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    self.xmlHttpReq.open('POST', "marcarFavorito.htm?idArticulo=" + idArticulo, true);
+    self.xmlHttpReq.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    self.xmlHttpReq.onreadystatechange = function() {
+        if (self.xmlHttpReq.readyState == 4) {
+        	alert("Se ha marcado como favorito el articulo");
+        }
+    }
+    self.xmlHttpReq.send();
+}
+
 function verArticulo(idArticulo) {
     var form = document.createElement("form");
     form.setAttribute("method", "post");

@@ -56,6 +56,7 @@
 				<prop key="/borrarNumero.htm">borrarNumeroController</prop>
 				<prop key="/buscarNumeros.htm">buscarNumerosController</prop>
 				
+				<prop key="/marcarFavorito.htm">marcarFavoritoController</prop>
 				<prop key="/articulos.htm">articulosController</prop>
 				<prop key="/verArticulo.htm">verArticuloController</prop>
 				<prop key="/editarArticulo.htm">editarArticuloController</prop>
@@ -147,6 +148,7 @@
 	<bean id="articulosAbstractController" abstract="true">
 		<property name="articuloDao" ref="articuloDao"/>
 	</bean>
+	<bean id="marcarFavoritoController" class="com.roldan.revistero.controllers.articulos.MarcarFavoritoController" parent="articulosAbstractController"/>
 	<bean id="articulosController" class="com.roldan.revistero.controllers.articulos.ArticulosController" parent="articulosAbstractController"/>	
 	<bean id="verArticuloController" class="com.roldan.revistero.controllers.articulos.VerArticuloController" parent="articulosAbstractController"/>
 	<bean id="editarArticuloController" class="com.roldan.revistero.controllers.articulos.EditarArticuloController" parent="articulosAbstractController">
