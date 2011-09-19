@@ -3,9 +3,7 @@ $(document).ready(function() {
 });
 
 function marcarFavorito(event, idArticulo) {
-	alert("Se va a marcar como favorito el articulo");
-	
-    var xmlHttpReq = false;
+	var xmlHttpReq = false;
     var self = this;
     // Mozilla/Safari
     if (window.XMLHttpRequest) {
@@ -18,11 +16,6 @@ function marcarFavorito(event, idArticulo) {
 
     self.xmlHttpReq.open('POST', "marcarFavorito.htm?idArticulo=" + idArticulo, true);
     self.xmlHttpReq.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    self.xmlHttpReq.onreadystatechange = function() {
-        if (self.xmlHttpReq.readyState == 4) {
-        	alert("Se ha marcado como favorito el articulo");
-        }
-    }
     self.xmlHttpReq.send();
 }
 

@@ -30,7 +30,7 @@
 	<bean id="simpleUrlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="mappings">
 			<props>
-				<prop key="/inicio.htm">inicioController</prop>
+				<prop key="/inicio.htm">buscarArticulosFavoritosController</prop>
 				
 				<prop key="/categorias.htm">categoriasController</prop>
 				<prop key="/verCategoria.htm">verCategoriaController</prop>
@@ -62,6 +62,7 @@
 				<prop key="/editarArticulo.htm">editarArticuloController</prop>
 				<prop key="/borrarArticulo.htm">borrarArticuloController</prop>
 				<prop key="/buscarArticulos.htm">buscarArticulosController</prop>
+				<prop key="/articulosFavoritos.htm">buscarArticulosFavoritosController</prop>
 				
 			</props>
 		</property>
@@ -167,6 +168,7 @@
 		<property name="numeroDao" ref="numeroDao"/>
 		<property name="revistaDao" ref="revistaDao"/>
 	</bean>	
+	<bean id="buscarArticulosFavoritosController" class="com.roldan.revistero.controllers.articulos.BuscarArticulosFavoritosController" parent="articulosAbstractController"/>	
 	
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basenames">

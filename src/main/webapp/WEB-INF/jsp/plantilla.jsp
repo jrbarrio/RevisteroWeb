@@ -68,6 +68,7 @@
 										<li><a href="editarArticulo.htm"><spring:message code="titulo.nuevoarticulo"/></a></li>
 									</authz:authorize>
 									<li><a href="buscarArticulos.htm"><spring:message code="titulo.buscararticulos"/></a></li>
+									<li><a href="articulosFavoritos.htm"><spring:message code="titulo.articulosfavoritos"/></a></li>
 								</ul>
 							</li>
 						</ul>

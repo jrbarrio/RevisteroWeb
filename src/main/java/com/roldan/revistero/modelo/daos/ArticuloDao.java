@@ -92,4 +92,23 @@ public class ArticuloDao
 		
 		return articulos;
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Articulo> buscarArticulosFavoritos(Articulo articulo)
+	{		
+		Session session = template.getSessionFactory().openSession();
+
+		Criteria crit = session.createCriteria(Articulo.class);
+		
+		Criterion favoritoRestriction = Restrictions.eq("favorito", true);
+		crit.add(favoritoRestriction);
+
+		crit.addOrder(Order.asc("titulo"));
+
+		List<Articulo> articulos = crit.list();
+
+		session.close();
+		
+		return articulos;
+	}
 }
