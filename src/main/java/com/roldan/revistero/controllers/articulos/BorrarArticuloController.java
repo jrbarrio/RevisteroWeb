@@ -1,42 +1,32 @@
 package com.roldan.revistero.controllers.articulos;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.validation.BindException;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.AbstractCommandController;
+import org.springframework.web.servlet.mvc.SimpleFormController;
 
 import com.roldan.revistero.modelo.Articulo;
 import com.roldan.revistero.modelo.daos.ArticuloDao;
 
-public class BorrarArticuloController extends AbstractCommandController
-{
+public class BorrarArticuloController extends SimpleFormController {
 	private ArticuloDao articuloDao;
 	public void setArticuloDao(ArticuloDao articuloDao) {
 		this.articuloDao = articuloDao;
 	}
 
-	public BorrarArticuloController() {
-		setCommandClass(Articulo.class);
-		setCommandName("articulo");
-	}
-
 	@Override
-	protected ModelAndView handle(
+	protected ModelAndView handleRequestInternal(
 			HttpServletRequest request,
-			HttpServletResponse response,
-			Object command,
-			BindException exception)
+			HttpServletResponse response)
 	{		
-		Articulo articulo = (Articulo) command;
+		Articulo articulo = new Articulo();
+		String idArticulo = request.getParameter("idArticulo");
+		if(idArticulo != null && !idArticulo.equals("")) {
+			articulo.setIdArticulo(Long.valueOf(idArticulo));		
+			articuloDao.borrarArticulo(articulo);
+		}
 		
-		articuloDao.borrarArticulo(articulo);
-		
-		List<Articulo> articulos = articuloDao.findArticulos();
-		
-		return new ModelAndView("articulos", "articulos", articulos);
+		return null;
 	}
 }

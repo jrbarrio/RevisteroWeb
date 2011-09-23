@@ -1,42 +1,32 @@
 package com.roldan.revistero.controllers.temas;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.validation.BindException;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.AbstractCommandController;
+import org.springframework.web.servlet.mvc.SimpleFormController;
 
 import com.roldan.revistero.modelo.Tema;
 import com.roldan.revistero.modelo.daos.TemaDao;
 
-public class BorrarTemaController extends AbstractCommandController
-{
+public class BorrarTemaController extends SimpleFormController {
 	private TemaDao temaDao;
 	public void setTemaDao(TemaDao temaDao) {
 		this.temaDao = temaDao;
 	}
 
-	public BorrarTemaController() {
-		setCommandClass(Tema.class);
-		setCommandName("tema");
-	}
-
 	@Override
-	protected ModelAndView handle(
+	protected ModelAndView handleRequestInternal(
 			HttpServletRequest request,
-			HttpServletResponse response,
-			Object command,
-			BindException exception)
+			HttpServletResponse response)
 	{		
-		Tema tema = (Tema) command;
+		Tema tema = new Tema();
+		String idTema = request.getParameter("idTema");
+		if(idTema != null && !idTema.equals("")) {
+			tema.setIdTema(Long.valueOf(idTema));		
+			temaDao.borrarTema(tema);
+		}
 		
-		temaDao.borrarTema(tema);
-		
-		List<Tema> temas = temaDao.findTemas();
-		
-		return new ModelAndView("temas", "temas", temas);
+		return null;
 	}
 }

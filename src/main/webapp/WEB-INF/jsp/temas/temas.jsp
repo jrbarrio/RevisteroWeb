@@ -19,10 +19,10 @@
 						</tr>
 					</thead>
 					<c:forEach items="${temas}" var="tema">
-					<tr onclick="javascript:verTema(<c:out value='${tema.idTema}'/>);">
-						<td class="columna1"><c:out value="${tema.nombre}"/></td>
-						<td class="columna2"><c:out value="${tema.descripcion}"/></td>
-						<td class="columna3"><c:out value="${tema.categoria.nombre}"/></td>
+					<tr id="<c:out value='${tema.idTema}'/>">
+						<td onclick="javascript:verTema(<c:out value='${tema.idTema}'/>);" class="columna1"><c:out value="${tema.nombre}"/></td>
+						<td onclick="javascript:verTema(<c:out value='${tema.idTema}'/>);" class="columna2"><c:out value="${tema.descripcion}"/></td>
+						<td onclick="javascript:verTema(<c:out value='${tema.idTema}'/>);" class="columna3"><c:out value="${tema.categoria.nombre}"/></td>
 						<authz:authorize ifAllGranted="ROLE_EDITOR">
 							<td class="columna6">
 								<a class="boton" onclick="javascript:borrarTema(event, <c:out value='${tema.idTema}'/>);">

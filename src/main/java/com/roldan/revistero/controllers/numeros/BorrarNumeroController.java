@@ -1,42 +1,32 @@
 package com.roldan.revistero.controllers.numeros;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.validation.BindException;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.AbstractCommandController;
+import org.springframework.web.servlet.mvc.SimpleFormController;
 
 import com.roldan.revistero.modelo.Numero;
 import com.roldan.revistero.modelo.daos.NumeroDao;
 
-public class BorrarNumeroController extends AbstractCommandController
-{
+public class BorrarNumeroController extends SimpleFormController {
 	private NumeroDao numeroDao;
 	public void setNumeroDao(NumeroDao numeroDao) {
 		this.numeroDao = numeroDao;
 	}
 
-	public BorrarNumeroController() {
-		setCommandClass(Numero.class);
-		setCommandName("numero");
-	}
-
 	@Override
-	protected ModelAndView handle(
+	protected ModelAndView handleRequestInternal(
 			HttpServletRequest request,
-			HttpServletResponse response,
-			Object command,
-			BindException exception)
+			HttpServletResponse response)
 	{		
-		Numero numero = (Numero) command;
+		Numero numero = new Numero();
+		String idNumero = request.getParameter("idNumero");
+		if(idNumero != null && !idNumero.equals("")) {
+			numero.setIdNumero(Long.valueOf(idNumero));		
+			numeroDao.borrarNumero(numero);
+		}
 		
-		numeroDao.borrarNumero(numero);
-		
-		List<Numero> numeros = numeroDao.findNumeros();
-		
-		return new ModelAndView("numeros", "numeros", numeros);
+		return null;
 	}
 }

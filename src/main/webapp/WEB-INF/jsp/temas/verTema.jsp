@@ -59,7 +59,7 @@
 					</thead>
 					<tbody>
 						<c:forEach items="${tema.articulos}" var="articulo">
-						<tr>
+						<tr id="<c:out value='${articulo.idArticulo}'/>">
 							<td onclick="javascript:verArticulo(<c:out value='${articulo.idArticulo}'/>);" class="columna1"><c:out value="${articulo.titulo}"/></td>
 							<td onclick="javascript:verArticulo(<c:out value='${articulo.idArticulo}'/>);" class="columna2"><c:out value="${articulo.descripcion}"/></td>
 							<td onclick="javascript:verArticulo(<c:out value='${articulo.idArticulo}'/>);" class="columna3"><c:out value="${articulo.numero.numero}"/></td>

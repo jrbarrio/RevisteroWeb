@@ -46,9 +46,9 @@
 						</tr>
 					</thead>
 					<c:forEach items="${revista.numeros}" var="numero">
-					<tr onclick="javascript:verNumero(<c:out value='${numero.idNumero}'/>);">
-						<td class="columna1"><c:out value="${numero.numero}"/> - <c:out value="${numero.titulo}"/></td>
-						<td class="columna2"><c:out value="${numero.descripcion}"/></td>
+					<tr id="<c:out value='${numero.idNumero}'/>">
+						<td onclick="javascript:verNumero(<c:out value='${numero.idNumero}'/>);" class="columna1"><c:out value="${numero.numero}"/> - <c:out value="${numero.titulo}"/></td>
+						<td onclick="javascript:verNumero(<c:out value='${numero.idNumero}'/>);" class="columna2"><c:out value="${numero.descripcion}"/></td>
 						<authz:authorize ifAllGranted="ROLE_EDITOR">
 							<td class="columna6">
 								<a class="boton" onclick="javascript:borrarNumero(event, <c:out value='${numero.idNumero}'/>);">

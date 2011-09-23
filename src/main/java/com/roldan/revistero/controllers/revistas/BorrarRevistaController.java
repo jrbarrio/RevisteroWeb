@@ -1,42 +1,32 @@
 package com.roldan.revistero.controllers.revistas;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.validation.BindException;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.AbstractCommandController;
+import org.springframework.web.servlet.mvc.SimpleFormController;
 
 import com.roldan.revistero.modelo.Revista;
 import com.roldan.revistero.modelo.daos.RevistaDao;
 
-public class BorrarRevistaController extends AbstractCommandController
-{
+public class BorrarRevistaController extends SimpleFormController {
 	private RevistaDao revistaDao;
 	public void setRevistaDao(RevistaDao revistaDao) {
 		this.revistaDao = revistaDao;
 	}
 
-	public BorrarRevistaController() {
-		setCommandClass(Revista.class);
-		setCommandName("revista");
-	}
-
 	@Override
-	protected ModelAndView handle(
+	protected ModelAndView handleRequestInternal(
 			HttpServletRequest request,
-			HttpServletResponse response,
-			Object command,
-			BindException exception)
+			HttpServletResponse response)
 	{		
-		Revista revista = (Revista) command;
+		Revista revista = new Revista();
+		String idRevista = request.getParameter("idRevista");
+		if(idRevista != null && !idRevista.equals("")) {
+			revista.setIdRevista(Long.valueOf(idRevista));		
+			revistaDao.borrarRevista(revista);
+		}
 		
-		revistaDao.borrarRevista(revista);
-		
-		List<Revista> revistas = revistaDao.findRevistas();
-		
-		return new ModelAndView("revistas", "revistas", revistas);
+		return null;
 	}
 }

@@ -18,17 +18,17 @@
 						</tr>
 					</thead>
 					<c:forEach items="${categorias}" var="categoria">
-					<tr onclick="javascript:verCategoria(<c:out value='${categoria.idCategoria}'/>);">
-						<td class="columna1"><c:out value="${categoria.nombre}"/></td>
-						<td class="columna2"><c:out value="${categoria.descripcion}"/></td>
-						<authz:authorize ifAllGranted="ROLE_EDITOR">
-							<td class="columna6">
-								<a class="boton" onclick="javascript:borrarCategoria(event, <c:out value='${categoria.idCategoria}'/>);">
-									<spring:message code="boton.borrar"/>
-								</a>
-							</td>
-						</authz:authorize>
-					</tr>	
+						<tr id="<c:out value='${categoria.idCategoria}'/>">
+							<td onclick="javascript:verCategoria(<c:out value='${categoria.idCategoria}'/>);" class="columna1"><c:out value="${categoria.nombre}"/></td>
+							<td onclick="javascript:verCategoria(<c:out value='${categoria.idCategoria}'/>);" class="columna2"><c:out value="${categoria.descripcion}"/></td>
+							<authz:authorize ifAllGranted="ROLE_EDITOR">
+								<td class="columna6">
+									<a class="boton" onclick="javascript:borrarCategoria(event, <c:out value='${categoria.idCategoria}'/>);">
+										<spring:message code="boton.borrar"/>
+									</a>
+								</td>
+							</authz:authorize>
+						</tr>	
 					</c:forEach>								
 				</table>			
 			</form>			
