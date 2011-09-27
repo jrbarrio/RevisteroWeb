@@ -115,6 +115,6 @@ public class EditarArticuloController extends SimpleFormController {
 		Articulo articulo = (Articulo) command;
 		articuloDao.guardarArticulo(articulo);
 		
-		return new ModelAndView(getSuccessView());
+		return new ModelAndView(getSuccessView(),"articulo", articulo);
 	}
 }

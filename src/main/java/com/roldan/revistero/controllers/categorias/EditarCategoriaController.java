@@ -7,13 +7,19 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
 
 import com.roldan.revistero.modelo.Categoria;
+import com.roldan.revistero.modelo.Tema;
 import com.roldan.revistero.modelo.daos.CategoriaDao;
+import com.roldan.revistero.modelo.daos.TemaDao;
 
 public class EditarCategoriaController extends SimpleFormController {
 	
 	private CategoriaDao categoriaDao;
 	public void setCategoriaDao(CategoriaDao categoriaDao) {
 		this.categoriaDao = categoriaDao;
+	}
+	private TemaDao temaDao;
+	public void setTemaDao(TemaDao temaDao) {
+		this.temaDao = temaDao;
 	}
 
 	public EditarCategoriaController() {
@@ -41,7 +47,10 @@ public class EditarCategoriaController extends SimpleFormController {
 		
 		Categoria categoria = (Categoria) command;
 		categoriaDao.guardarCategoria(categoria);
+		Tema tema = new Tema();
+		tema.setCategoria(categoria);
+		categoria.setTemas(temaDao.buscarTemas(tema));
 		
-		return new ModelAndView(getSuccessView());
+		return new ModelAndView(getSuccessView(), "categoria", categoria);
 	}
 }

@@ -79,7 +79,8 @@
 	</bean>
 	<bean id="editarCategoriaController" class="com.roldan.revistero.controllers.categorias.EditarCategoriaController" parent="categoriasAbstractController">
 		<property name="formView" value="editarCategoria"/>
-		<property name="successView" value="actualizacion"/>
+		<property name="successView" value="verCategoria"/>
+		<property name="temaDao" ref="temaDao"/>
 		<property name="validator" ref="beanValidator"/>
 	</bean>
 	<bean id="borrarCategoriaController" class="com.roldan.revistero.controllers.categorias.BorrarCategoriaController" parent="categoriasAbstractController"/>
@@ -97,8 +98,9 @@
 	</bean>
 	<bean id="editarTemaController" class="com.roldan.revistero.controllers.temas.EditarTemaController" parent="temasAbstractController">
 		<property name="formView" value="editarTema"/>
-		<property name="successView" value="actualizacion"/>
+		<property name="successView" value="verTema"/>
 		<property name="categoriaDao" ref="categoriaDao"/>
+		<property name="articuloDao" ref="articuloDao"/>
 		<property name="validator" ref="beanValidator"/>
 	</bean>
 	<bean id="borrarTemaController" class="com.roldan.revistero.controllers.temas.BorrarTemaController" parent="temasAbstractController"/>
@@ -117,7 +119,8 @@
 	</bean>
 	<bean id="editarRevistaController" class="com.roldan.revistero.controllers.revistas.EditarRevistaController" parent="revistasAbstractController">
 		<property name="formView" value="editarRevista"/>
-		<property name="successView" value="actualizacion"/>
+		<property name="successView" value="verRevista"/>
+		<property name="numeroDao" ref="numeroDao"/>
 		<property name="validator" ref="beanValidator"/>
 	</bean>
 	<bean id="borrarRevistaController" class="com.roldan.revistero.controllers.revistas.BorrarRevistaController" parent="revistasAbstractController"/>
@@ -135,8 +138,9 @@
 	</bean>
 	<bean id="editarNumeroController" class="com.roldan.revistero.controllers.numeros.EditarNumeroController" parent="numerosAbstractController">
 		<property name="formView" value="editarNumero"/>
-		<property name="successView" value="actualizacion"/>
+		<property name="successView" value="verNumero"/>
 		<property name="revistaDao" ref="revistaDao"/>
+		<property name="articuloDao" ref="articuloDao"/>
 		<property name="validator" ref="beanValidator"/>
 	</bean>
 	<bean id="borrarNumeroController" class="com.roldan.revistero.controllers.numeros.BorrarNumeroController" parent="numerosAbstractController"/>
@@ -154,7 +158,7 @@
 	<bean id="verArticuloController" class="com.roldan.revistero.controllers.articulos.VerArticuloController" parent="articulosAbstractController"/>
 	<bean id="editarArticuloController" class="com.roldan.revistero.controllers.articulos.EditarArticuloController" parent="articulosAbstractController">
 		<property name="formView" value="editarArticulo"/>
-		<property name="successView" value="actualizacion"/>
+		<property name="successView" value="verArticulo"/>
 		<property name="temaDao" ref="temaDao"/>
 		<property name="numeroDao" ref="numeroDao"/>
 		<property name="revistaDao" ref="revistaDao"/>

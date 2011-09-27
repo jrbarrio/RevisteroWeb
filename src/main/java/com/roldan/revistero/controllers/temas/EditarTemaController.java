@@ -10,8 +10,10 @@ import org.springframework.validation.BindException;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
 
+import com.roldan.revistero.modelo.Articulo;
 import com.roldan.revistero.modelo.Categoria;
 import com.roldan.revistero.modelo.Tema;
+import com.roldan.revistero.modelo.daos.ArticuloDao;
 import com.roldan.revistero.modelo.daos.CategoriaDao;
 import com.roldan.revistero.modelo.daos.TemaDao;
 
@@ -24,6 +26,10 @@ public class EditarTemaController extends SimpleFormController {
 	private CategoriaDao categoriaDao;
 	public void setCategoriaDao(CategoriaDao categoriaDao) {
 		this.categoriaDao = categoriaDao;
+	}
+	private ArticuloDao articuloDao;
+	public void setArticuloDao(ArticuloDao articuloDao) {
+		this.articuloDao = articuloDao;
 	}
 
 	public EditarTemaController() {
@@ -66,7 +72,10 @@ public class EditarTemaController extends SimpleFormController {
 		
 		Tema tema = (Tema) command;
 		temaDao.guardarTema(tema);
+		Articulo articulo = new Articulo();
+		articulo.setTema(tema);
+		tema.setArticulos(articuloDao.buscarArticulos(articulo));
 		
-		return new ModelAndView(getSuccessView());
+		return new ModelAndView(getSuccessView(), "tema", tema);
 	}
 }

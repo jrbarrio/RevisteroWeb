@@ -10,8 +10,10 @@ import org.springframework.validation.BindException;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
 
+import com.roldan.revistero.modelo.Articulo;
 import com.roldan.revistero.modelo.Revista;
 import com.roldan.revistero.modelo.Numero;
+import com.roldan.revistero.modelo.daos.ArticuloDao;
 import com.roldan.revistero.modelo.daos.RevistaDao;
 import com.roldan.revistero.modelo.daos.NumeroDao;
 
@@ -24,6 +26,10 @@ public class EditarNumeroController extends SimpleFormController {
 	private RevistaDao revistaDao;
 	public void setRevistaDao(RevistaDao revistaDao) {
 		this.revistaDao = revistaDao;
+	}
+	private ArticuloDao articuloDao;
+	public void setArticuloDao(ArticuloDao articuloDao) {
+		this.articuloDao = articuloDao;
 	}
 
 	public EditarNumeroController() {
@@ -66,7 +72,11 @@ public class EditarNumeroController extends SimpleFormController {
 		
 		Numero numero = (Numero) command;
 		numeroDao.guardarNumero(numero);
+		Articulo articulo = new Articulo();
+		articulo.setNumero(numero);
+		List<Articulo> articulos = articuloDao.buscarArticulos(articulo);
+		numero.setArticulos(articulos);
 		
-		return new ModelAndView(getSuccessView());
+		return new ModelAndView(getSuccessView(), "numero", numero);
 	}
 }

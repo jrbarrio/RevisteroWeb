@@ -1,12 +1,16 @@
 package com.roldan.revistero.controllers.revistas;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.validation.BindException;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
 
+import com.roldan.revistero.modelo.Numero;
 import com.roldan.revistero.modelo.Revista;
+import com.roldan.revistero.modelo.daos.NumeroDao;
 import com.roldan.revistero.modelo.daos.RevistaDao;
 
 public class EditarRevistaController extends SimpleFormController {
@@ -14,6 +18,10 @@ public class EditarRevistaController extends SimpleFormController {
 	private RevistaDao revistaDao;
 	public void setRevistaDao(RevistaDao revistaDao) {
 		this.revistaDao = revistaDao;
+	}
+	private NumeroDao numeroDao;
+	public void setNumeroDao(NumeroDao numeroDao) {
+		this.numeroDao = numeroDao;
 	}
 
 	public EditarRevistaController() {
@@ -42,7 +50,11 @@ public class EditarRevistaController extends SimpleFormController {
 		
 		Revista revista = (Revista) command;
 		revistaDao.guardarRevista(revista);
+		Numero numero = new Numero();
+		numero.setRevista(revista);
+		List<Numero> numeros = numeroDao.buscarNumeros(numero);
+		revista.setNumeros(numeros);
 		
-		return new ModelAndView(getSuccessView());
+		return new ModelAndView(getSuccessView(), "revista", revista);
 	}
 }
