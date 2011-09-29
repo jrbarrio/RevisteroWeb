@@ -5,7 +5,7 @@
 <hibernate-mapping package="com.roldan.revistero.modelo">
   <class 
   	name="Categoria"
-  	table="CATEGORIAS">
+  	table="categorias">
   	
   	<id
 		name="idCategoria"
