@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * 
- * @author Jorge Roldán
+ * @author Jorge Roldï¿½n
  * @since 03/12/2008
  *
  */
