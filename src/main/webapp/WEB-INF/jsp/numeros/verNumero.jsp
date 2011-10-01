@@ -54,7 +54,7 @@
 		<div>
 			<form name="formarticulos">
 				<c:choose> 
-		  			<c:when test="${!empty categoria.temas}" >
+		  			<c:when test="${!empty numero.articulos}" >
 						<table class="tabla">
 							<thead>
 								<tr class="cabeceraTabla">
@@ -95,7 +95,7 @@
 							</tbody>							
 						</table>			
 					</c:when>
-					<c:otherwise>Este número no tiene artíuculos.</c:otherwise>
+					<c:otherwise>Este número no tiene artículos.</c:otherwise>
 				</c:choose>	
 			</form>			
 		</div>
