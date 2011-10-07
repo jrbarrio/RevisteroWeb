@@ -7,9 +7,7 @@
 <html>
 	<head>			
 		<title><spring:message code="titulo.revistero"/></title>
-		<link rel="STYLESHEET" type="text/css" href="<%=request.getContextPath()%>/css/estilos.css">
-		
-		<script type="text/javascript" src="js/jquery.js"></script>            
+		<link rel="STYLESHEET" type="text/css" href="css/revistero.css">		           
   		<script type="text/javascript" src="js/revistero.js"></script>  
 	</head>
 	<body>

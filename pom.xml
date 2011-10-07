@@ -1,13 +1,56 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.roldan.revistero</groupId>
 	<artifactId>RevisteroWeb</artifactId>
 	<name>RevisteroWeb</name>
-	<version>0.3.3</version>
+	<version>0.3.4</version>
 	<packaging>war</packaging>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<name>oss.sonatype.org</name>
+			<id>oss.sonatype.org</id>
+			<url>http://oss.sonatype.org/content/groups/public</url>
+		</pluginRepository>
+	</pluginRepositories>
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>net.alchim31.maven</groupId>
+				<artifactId>yuicompressor-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>compress</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<nosuffix>false</nosuffix>
+					<jswarn>false</jswarn>
+					<preserveStringLiterals>true</preserveStringLiterals>
+					<preserveAllSemiColons>true</preserveAllSemiColons>
+					<nomunge>true</nomunge>
+					<failOnWarning>false</failOnWarning>
+
+					<aggregations>
+						<aggregation>
+							<includes>
+								<include>**/*-min.js</include>
+							</includes>
+							<output>${project.build.directory}/${project.artifactId}-${project.version}/js/revistero.js</output>
+						</aggregation>
+						<aggregation>
+							<includes>
+								<include>**/*-min.css</include>
+							</includes>
+							<output>${project.build.directory}/${project.artifactId}-${project.version}/css/revistero.css</output>
+						</aggregation>
+					</aggregations>
+				</configuration>
+			</plugin>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
@@ -17,17 +60,10 @@
 				</configuration>
 			</plugin>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-release-plugin</artifactId>
-				<version>2.1</version>
-				<configuration>
-					<tagBase>http://192.168.11.128/svn/revistero/tags/releases</tagBase>
-				</configuration>
-			</plugin>
-			<plugin>
 				<groupId>org.mortbay.jetty</groupId>
 				<artifactId>maven-jetty-plugin</artifactId>
 				<configuration>
+					<webApp>${project.build.directory}/${project.artifactId}-${project.version}.war</webApp>
 					<connectors>
 						<connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
 							<port>8081</port>
@@ -63,14 +99,14 @@
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-			  	<artifactId>maven-surefire-plugin</artifactId>
-			  	<version>2.4</version>
-			 	<configuration>
-			    	<includes>
-			      		<include>**/*Test.java</include>
-			    	</includes>
-			   		<forkMode>once</forkMode>
-			  	</configuration>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<includes>
+						<include>**/*Test.java</include>
+					</includes>
+					<forkMode>once</forkMode>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
@@ -104,53 +140,53 @@
 			<artifactId>jasper-el</artifactId>
 			<version>6.0.26</version>
 			<scope>provided</scope>
-		</dependency>		
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring</artifactId>
 			<version>2.0.8</version>
-		</dependency>		
+		</dependency>
 		<dependency>
 			<groupId>org.apache.struts</groupId>
 			<artifactId>struts-tiles</artifactId>
 			<version>1.3.10</version>
-		</dependency>		
+		</dependency>
 		<dependency>
-		    <groupId>org.springmodules</groupId>
-		    <artifactId>spring-modules-validation</artifactId>
-		    <version>0.6</version>
-		     <exclusions>
-		    	<exclusion>
-		    		<artifactId>ejb</artifactId>
-		    		<groupId>javax.persistence</groupId>
-		    	</exclusion>
-		    	<exclusion>
-		    		<artifactId>spring</artifactId>
-		    		<groupId>org.springframework</groupId>
-		    	</exclusion>
-		    </exclusions>
+			<groupId>org.springmodules</groupId>
+			<artifactId>spring-modules-validation</artifactId>
+			<version>0.6</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>ejb</artifactId>
+					<groupId>javax.persistence</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>spring</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<dependency>
-		    <groupId>acegisecurity</groupId>
-		    <artifactId>acegi-security</artifactId>
-		    <version>1.0.0</version>
-		    <exclusions>
-		    	<exclusion>
-		    		<artifactId>spring-jdbc</artifactId>
-		    		<groupId>org.springframework</groupId>
-		    	</exclusion>
-		    	<exclusion>
-		    		<artifactId>spring-remoting</artifactId>
-		    		<groupId>org.springframework</groupId>
-		    	</exclusion>
-		    	<exclusion>
-		    		<artifactId>spring-support</artifactId>
-		    		<groupId>org.springframework</groupId>
-		    	</exclusion>
-		    </exclusions>
-		</dependency>		
+			<groupId>acegisecurity</groupId>
+			<artifactId>acegi-security</artifactId>
+			<version>1.0.0</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>spring-jdbc</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>spring-remoting</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>spring-support</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -169,10 +205,10 @@
 		</dependency>
 
 		<dependency>
-		    <groupId>org.apache.lucene</groupId>
-		    <artifactId>lucene-core</artifactId>
-		    <version>3.0.2</version>
-		</dependency>  	
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-core</artifactId>
+			<version>3.0.2</version>
+		</dependency>
 
 		<dependency>
 			<groupId>log4j</groupId>
@@ -186,20 +222,20 @@
 		</dependency>
 
 		<dependency>
-		    <groupId>junit</groupId>
-		    <artifactId>junit</artifactId>
-		    <version>4.8.2</version>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.2</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.easymock</groupId>
-		    <artifactId>easymock</artifactId>
-		    <version>3.0</version>
+			<groupId>org.easymock</groupId>
+			<artifactId>easymock</artifactId>
+			<version>3.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-mock</artifactId>
 			<version>2.0.8</version>
 			<scope>test</scope>
-		</dependency>		
+		</dependency>
 	</dependencies>
 </project>
