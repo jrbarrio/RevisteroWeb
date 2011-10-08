@@ -29,12 +29,9 @@
 					</execution>
 				</executions>
 				<configuration>
-					<nosuffix>false</nosuffix>
 					<jswarn>true</jswarn>
-					<preserveStringLiterals>true</preserveStringLiterals>
-					<preserveAllSemiColons>true</preserveAllSemiColons>
-					<nomunge>true</nomunge>
 					<failOnWarning>false</failOnWarning>
+					<nomunge>false</nomunge>
 					<excludes>
 						<exclude>**/jquery.js</exclude>
 					</excludes>
