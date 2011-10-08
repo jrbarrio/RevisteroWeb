@@ -24,17 +24,20 @@
 					<execution>
 						<goals>
 							<goal>compress</goal>
+							<goal>jslint</goal>
 						</goals>
 					</execution>
 				</executions>
 				<configuration>
 					<nosuffix>false</nosuffix>
-					<jswarn>false</jswarn>
+					<jswarn>true</jswarn>
 					<preserveStringLiterals>true</preserveStringLiterals>
 					<preserveAllSemiColons>true</preserveAllSemiColons>
 					<nomunge>true</nomunge>
 					<failOnWarning>false</failOnWarning>
-
+					<excludes>
+						<exclude>**/jquery.js</exclude>
+					</excludes>
 					<aggregations>
 						<aggregation>
 							<includes>

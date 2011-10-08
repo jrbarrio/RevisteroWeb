@@ -7,8 +7,11 @@
 <html>
 	<head>			
 		<title><spring:message code="titulo.revistero"/></title>
-		<link rel="STYLESHEET" type="text/css" href="css/revistero.css">		           
-  		<script type="text/javascript" src="js/revistero.js"></script>  
+			           
+  		<script type="text/javascript" src="js/jquery.js"></script>
+  		<script type="text/javascript" src="js/revistero.js"></script>
+  		
+  		<link rel="STYLESHEET" type="text/css" href="css/revistero.css">	  
 	</head>
 	<body>
 		<div class="contenedor">
