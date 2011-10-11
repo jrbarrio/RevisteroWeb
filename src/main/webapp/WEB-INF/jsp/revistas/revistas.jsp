@@ -19,11 +19,11 @@
 					</thead>
 					<c:forEach items="${revistas}" var="revista">
 					<tr id="<c:out value='${revista.idRevista}'/>">
-						<td onclick="javascript:verRevista(<c:out value='${revista.idRevista}'/>);" class="columna1"><c:out value="${revista.nombre}"/></td>
-						<td onclick="javascript:verRevista(<c:out value='${revista.idRevista}'/>);" class="columna2"><c:out value="${revista.descripcion}"/></td>
+						<td onclick="verRevista(<c:out value='${revista.idRevista}'/>);" class="columna1"><c:out value="${revista.nombre}"/></td>
+						<td onclick="verRevista(<c:out value='${revista.idRevista}'/>);" class="columna2"><c:out value="${revista.descripcion}"/></td>
 						<authz:authorize ifAllGranted="ROLE_EDITOR">
 							<td class="columna6">
-								<a class="boton" onclick="javascript:borrarRevista(event, <c:out value='${revista.idRevista}'/>);">
+								<a class="boton" onclick="borrarRevista(event, <c:out value='${revista.idRevista}'/>);">
 									<spring:message code="boton.borrar"/>
 								</a>
 							</td>

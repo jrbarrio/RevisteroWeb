@@ -31,16 +31,16 @@
 									<td class="columna3">
 										<c:choose> 
 											<c:when test="${articulo.favorito}">
-												<input type="checkbox" checked="checked" onclick="javascript:marcarFavorito(event, <c:out value='${articulo.idArticulo}'/>);"/>
+												<input type="checkbox" checked="checked" onclick="marcarFavorito(event, <c:out value='${articulo.idArticulo}'/>);"/>
 											</c:when>
 											<c:otherwise>
-												<input type="checkbox" onclick="javascript:marcarFavorito(event, <c:out value='${articulo.idArticulo}'/>);"/>
+												<input type="checkbox" onclick="marcarFavorito(event, <c:out value='${articulo.idArticulo}'/>);"/>
 											</c:otherwise>								
 										</c:choose>							
 									</td>
 									<authz:authorize ifAllGranted="ROLE_EDITOR">
 										<td class="columna6">
-											<a class="boton" onclick="javascript:borrarArticulo(event, <c:out value='${articulo.idArticulo}'/>);">
+											<a class="boton" onclick="borrarArticulo(event, <c:out value='${articulo.idArticulo}'/>);">
 												<spring:message code="boton.borrar"/>
 											</a>
 										</td>

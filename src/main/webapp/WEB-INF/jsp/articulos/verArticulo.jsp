@@ -24,7 +24,7 @@
 						<div class="nombre_campo"><spring:message code="campo.tema"/></div>
 						<div class="valor_campo">
 		           			<div class="deshabilitado">
-		           				<a onclick="javascript:verTema(<c:out value="${articulo.tema.idTema}"/>);">
+		           				<a onclick="verTema(<c:out value="${articulo.tema.idTema}"/>);">
 		           					<c:out value="${articulo.tema.nombre}"/>
 		           				</a>
 		           			</div>
@@ -34,7 +34,7 @@
 						<div class="nombre_campo"><spring:message code="campo.numero"/></div>
 						<div class="valor_campo">
 		            		<div class="deshabilitado">
-		            			<a onclick="javascript:verNumero(<c:out value="${articulo.numero.idNumero}"/>);">
+		            			<a onclick="verNumero(<c:out value="${articulo.numero.idNumero}"/>);">
 		           					<c:out value="${articulo.numero.numero}"/> - <c:out value="${articulo.numero.titulo}"/>
 		           				</a>
 		            		</div>
@@ -44,7 +44,7 @@
 						<div class="nombre_campo"><spring:message code="campo.revista"/></div>
 						<div class="valor_campo">
 		           			<div class="deshabilitado">
-		           			<a onclick="javascript:verRevista(<c:out value="${articulo.numero.revista.idRevista}"/>);">
+		           			<a onclick="verRevista(<c:out value="${articulo.numero.revista.idRevista}"/>);">
 		           					<c:out value="${articulo.numero.revista.nombre}"/>
 		           				</a>
 		           			</div>

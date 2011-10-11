@@ -1,9 +1,10 @@
 function verArticulo(idArticulo) {
-    var form = document.createElement("form");
+    var form = document.createElement("form"), 
+    	hiddenField = document.createElement("input");
+    
     form.setAttribute("method", "post");
     form.setAttribute("action", "verArticulo.htm");
 
-    var hiddenField = document.createElement("input");
     hiddenField.setAttribute("type", "hidden");
     hiddenField.setAttribute("name", "idArticulo");
     hiddenField.setAttribute("value", idArticulo);
@@ -18,20 +19,16 @@ function borrarArticulo(event, idArticulo) {
 	event.stopPropagation();
 	
 	if(confirm("�Desea realmente borrar este art�culo?")) {	
-		var xmlHttpReq = false;
-	    var self = this;
-	    // Mozilla/Safari
+		var xmlHttpReq = null;
 	    if (window.XMLHttpRequest) {
-	        self.xmlHttpReq = new XMLHttpRequest();
-	    }
-	    // IE
-	    else if (window.ActiveXObject) {
-	        self.xmlHttpReq = new ActiveXObject("Microsoft.XMLHTTP");
+	        xmlHttpReq = new XMLHttpRequest();
+	    } else if (window.ActiveXObject) {
+	        xmlHttpReq = new ActiveXObject("Microsoft.XMLHTTP");
 	    }
 
-	    self.xmlHttpReq.open('POST', "borrarArticulo.htm?idArticulo=" + idArticulo, true);
-	    self.xmlHttpReq.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-	    self.xmlHttpReq.send();
+	    xmlHttpReq.open('POST', "borrarArticulo.htm?idArticulo=" + idArticulo, true);
+	    xmlHttpReq.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	    xmlHttpReq.send();
 	 
 	    eliminarFilaTabla(idArticulo);
 	    pintarFondoFilas();
@@ -39,18 +36,14 @@ function borrarArticulo(event, idArticulo) {
 }
 
 function marcarFavorito(event, idArticulo) {
-	var xmlHttpReq = false;
-    var self = this;
-    // Mozilla/Safari
+	var xmlHttpReq = null;
     if (window.XMLHttpRequest) {
-        self.xmlHttpReq = new XMLHttpRequest();
-    }
-    // IE
-    else if (window.ActiveXObject) {
-        self.xmlHttpReq = new ActiveXObject("Microsoft.XMLHTTP");
+        xmlHttpReq = new XMLHttpRequest();
+    } else if (window.ActiveXObject) {
+        xmlHttpReq = new ActiveXObject("Microsoft.XMLHTTP");
     }
 
-    self.xmlHttpReq.open('POST', "marcarFavorito.htm?idArticulo=" + idArticulo, true);
-    self.xmlHttpReq.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    self.xmlHttpReq.send();
+    xmlHttpReq.open('POST', "marcarFavorito.htm?idArticulo=" + idArticulo, true);
+    xmlHttpReq.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xmlHttpReq.send();
 }

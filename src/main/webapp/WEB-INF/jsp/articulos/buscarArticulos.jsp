@@ -59,7 +59,7 @@
 					<div class="nombre_campo"><spring:message code="campo.revista"/></div>
 					<div class="valor_campo">
 	           			<div>
-	           				<form:select path="numero.revista.idRevista" onchange="javascript:actualizar();">
+	           				<form:select path="numero.revista.idRevista" onchange="actualizar();">
 	           					<form:option value="">Seleccionar...</form:option>
 	           					<form:options items="${revistas}" itemLabel="nombre" itemValue="idRevista"/>           					
 	           				</form:select>

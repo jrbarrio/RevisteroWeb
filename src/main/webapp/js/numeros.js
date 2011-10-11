@@ -1,9 +1,10 @@
 function verNumero(idNumero) {
-    var form = document.createElement("form");
+    var form = document.createElement("form"), 
+    	hiddenField = document.createElement("input");
+    
     form.setAttribute("method", "post");
     form.setAttribute("action", "verNumero.htm");
 
-    var hiddenField = document.createElement("input");
     hiddenField.setAttribute("type", "hidden");
     hiddenField.setAttribute("name", "idNumero");
     hiddenField.setAttribute("value", idNumero);
@@ -18,20 +19,16 @@ function borrarNumero(event, idNumero) {
 	event.stopPropagation();
 		
 	if(confirm("�Desea realmente borrar este numero?")) {	
-		var xmlHttpReq = false;
-	    var self = this;
-	    // Mozilla/Safari
+		var xmlHttpReq = null;
 	    if (window.XMLHttpRequest) {
-	        self.xmlHttpReq = new XMLHttpRequest();
-	    }
-	    // IE
-	    else if (window.ActiveXObject) {
-	        self.xmlHttpReq = new ActiveXObject("Microsoft.XMLHTTP");
+	        xmlHttpReq = new XMLHttpRequest();
+	    } else if (window.ActiveXObject) {
+	        xmlHttpReq = new ActiveXObject("Microsoft.XMLHTTP");
 	    }
 
-	    self.xmlHttpReq.open('POST', "borrarNumero.htm?idNumero=" + idNumero, true);
-	    self.xmlHttpReq.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-	    self.xmlHttpReq.send();
+	    xmlHttpReq.open('POST', "borrarNumero.htm?idNumero=" + idNumero, true);
+	    xmlHttpReq.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	    xmlHttpReq.send();
 	 
 	    eliminarFilaTabla(idNumero);
 	    pintarFondoFilas();

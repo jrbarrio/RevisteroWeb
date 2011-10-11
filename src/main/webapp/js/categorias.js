@@ -1,9 +1,10 @@
 function verCategoria(idCategoria) {
-    var form = document.createElement("form");
+    var form = document.createElement("form"), 
+    	hiddenField = document.createElement("input");
+    
     form.setAttribute("method", "post");
     form.setAttribute("action", "verCategoria.htm");
 
-    var hiddenField = document.createElement("input");
     hiddenField.setAttribute("type", "hidden");
     hiddenField.setAttribute("name", "idCategoria");
     hiddenField.setAttribute("value", idCategoria);
@@ -18,20 +19,16 @@ function borrarCategoria(event, idCategoria) {
 	event.stopPropagation();
 	
 	if(confirm("�Desea realmente borrar esta categoria?")) {	
-		var xmlHttpReq = false;
-	    var self = this;
-	    // Mozilla/Safari
+		var xmlHttpReq = null;
 	    if (window.XMLHttpRequest) {
-	        self.xmlHttpReq = new XMLHttpRequest();
-	    }
-	    // IE
-	    else if (window.ActiveXObject) {
-	        self.xmlHttpReq = new ActiveXObject("Microsoft.XMLHTTP");
+	        xmlHttpReq = new XMLHttpRequest();
+	    } else if (window.ActiveXObject) {
+	        xmlHttpReq = new ActiveXObject("Microsoft.XMLHTTP");
 	    }
 
-	    self.xmlHttpReq.open('POST', "borrarCategoria.htm?idCategoria=" + idCategoria, true);
-	    self.xmlHttpReq.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-	    self.xmlHttpReq.send();
+	    xmlHttpReq.open('POST', "borrarCategoria.htm?idCategoria=" + idCategoria, true);
+	    xmlHttpReq.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	    xmlHttpReq.send();
 	 
 	    eliminarFilaTabla(idCategoria);
 	    pintarFondoFilas();

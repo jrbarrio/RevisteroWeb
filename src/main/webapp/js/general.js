@@ -8,8 +8,8 @@ function pintarFondoFilas() {
 }
 
 function eliminarFilaTabla(id) {
-	var tr = document.getElementById(id);
-    var elements = document.getElementsByTagName("tbody");
+	var tr = document.getElementById(id),
+		elements = document.getElementsByTagName("tbody");
     elements[0].removeChild(tr);
 }
 

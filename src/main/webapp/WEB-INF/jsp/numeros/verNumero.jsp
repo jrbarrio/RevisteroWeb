@@ -32,7 +32,7 @@
 						<div class="nombre_campo"><spring:message code="campo.revista"/></div>
 						<div class="valor_campo">
 		           			<div class="deshabilitado">
-		           				<a onclick="javascript:verRevista(<c:out value="${numero.revista.idRevista}"/>);">
+		           				<a onclick="verRevista(<c:out value="${numero.revista.idRevista}"/>);">
 		           					<c:out value="${numero.revista.nombre}"/>
 		           				</a>
 		           			</div>
@@ -70,22 +70,22 @@
 							<tbody>
 								<c:forEach items="${numero.articulos}" var="articulo">
 								<tr id="<c:out value='${articulo.idArticulo}'/>">
-									<td onclick="javascript:verArticulo(<c:out value='${articulo.idArticulo}'/>);" class="columna1"><c:out value="${articulo.titulo}"/></td>
-									<td onclick="javascript:verArticulo(<c:out value='${articulo.idArticulo}'/>);" class="columna2"><c:out value="${articulo.descripcion}"/></td>
-									<td onclick="javascript:verArticulo(<c:out value='${articulo.idArticulo}'/>);" class="columna3"><c:out value="${articulo.numero.numero}"/></td>
+									<td onclick="verArticulo(<c:out value='${articulo.idArticulo}'/>);" class="columna1"><c:out value="${articulo.titulo}"/></td>
+									<td onclick="verArticulo(<c:out value='${articulo.idArticulo}'/>);" class="columna2"><c:out value="${articulo.descripcion}"/></td>
+									<td onclick="verArticulo(<c:out value='${articulo.idArticulo}'/>);" class="columna3"><c:out value="${articulo.numero.numero}"/></td>
 									<td class="columna3">
 										<c:choose> 
 											<c:when test="${articulo.favorito}">
-												<input type="checkbox" checked="checked" onclick="javascript:marcarFavorito(event, <c:out value='${articulo.idArticulo}'/>);"/>
+												<input type="checkbox" checked="checked" onclick="marcarFavorito(event, <c:out value='${articulo.idArticulo}'/>);"/>
 											</c:when>
 											<c:otherwise>
-												<input type="checkbox" onclick="javascript:marcarFavorito(event, <c:out value='${articulo.idArticulo}'/>);"/>
+												<input type="checkbox" onclick="marcarFavorito(event, <c:out value='${articulo.idArticulo}'/>);"/>
 											</c:otherwise>								
 										</c:choose>							
 									</td>
 									<authz:authorize ifAllGranted="ROLE_EDITOR">
 										<td class="columna6">
-											<a class="boton" onclick="javascript:borrarArticulo(event, <c:out value='${articulo.idArticulo}'/>);">
+											<a class="boton" onclick="borrarArticulo(event, <c:out value='${articulo.idArticulo}'/>);">
 												<spring:message code="boton.borrar"/>
 											</a>
 										</td>
