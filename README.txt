@@ -18,3 +18,8 @@ mvn jetty:run-war
 Ejecutar los goal del YUI Compressor:
 mvn net.alchim31.maven:yuicompressor-maven-plugin:compress
 mvn net.alchim31.maven:yuicompressor-maven-plugin:jslint
+
+TEMAS PENDIENTES:
+- Desacoplar el código javascript y html
+- Desacoplar el código javascript y css
+
